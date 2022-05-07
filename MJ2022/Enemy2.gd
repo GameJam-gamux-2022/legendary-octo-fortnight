@@ -1,23 +1,29 @@
 extends KinematicBody2D
 
 onready var player = get_node("../Player")
-var boost = 75000
-var collision = 0
+var boost = 100000
+var lim = 2
+var cooldown = 2
+var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
-func vector_module(vector):
-	return sqrt(pow(vector.x,2) + pow(vector.y,2))
-
+func get_dir(p):
+	return (global_position - p.global_position).normalized() * (-1)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if collision == 0:
-		var target = player.global_position
-		var distance = vector_module(global_position.distance_to(target))
-		var time = distance / boost
-		var velocity = (global_position - target).normalized()
-	move_and_slide(velocity * boost)
-	collision 	
-#	pass
+	if cooldown == lim: 
+		velocity = get_dir(player)
+		move_and_slide(velocity * boost * delta)
+
+	elif cooldown < lim && cooldown > 0:
+		move_and_slide(velocity * boost * delta)
+
+	elif cooldown < lim:
+		cooldown = lim
+		return
+
+	cooldown -= delta

@@ -4,7 +4,7 @@ extends KinematicBody2D
 onready var player = get_node("../Player")
 
 
-var speed = 25000
+var speed = 10000
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

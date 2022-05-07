@@ -11,6 +11,10 @@ func _ready():
 	pass # Replace with function body.
 
 
+export var move_velocity = Vector2(0, 1)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	var speed = 10000
+	move_and_slide(move_velocity * speed * delta)
+	pass

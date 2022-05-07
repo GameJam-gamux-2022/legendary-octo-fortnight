@@ -12,6 +12,7 @@ radius = 931.735
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 71, 47 )
+collision_layer = 3
 script = ExtResource( 1 )
 
 [node name="Icon" type="Sprite" parent="."]

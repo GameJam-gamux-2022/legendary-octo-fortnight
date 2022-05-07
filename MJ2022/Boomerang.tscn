@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32.5 )
 
-[node name="Boomerang" type="KinematicBody2D"]
+[node name="Boomerang" type="RigidBody2D"]
 scale = Vector2( 0.36, 0.36 )
+gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]

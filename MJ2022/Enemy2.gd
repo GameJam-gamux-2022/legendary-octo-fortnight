@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
 onready var player = get_node("../Player")
-var boost = 100000
+var boost = 80000
 var lim = 2
 var cooldown = 2
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass 
+	pass
 
 func get_dir(p):
 	return (global_position - p.global_position).normalized() * (-1)

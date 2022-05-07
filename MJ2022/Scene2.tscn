@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy3.tscn" type="PackedScene" id=3]
 [ext_resource path="res://wall.png" type="Texture" id=4]
 [ext_resource path="res://GameManager.gd" type="Script" id=5]
 
@@ -13,7 +13,7 @@ height = 1114.0
 [node name="Sample" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 559, 318 )
+position = Vector2( 540, 292.8 )
 scale = Vector2( 0.92, 0.940895 )
 texture = ExtResource( 2 )
 
@@ -82,11 +82,8 @@ collision_mask = 3
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource( 5 )
-qtdToKill = 2
-nextScene = "res://Scene1.tscn"
+qtdToKill = 1
+nextScene = "res://Scene3.tscn"
 
-[node name="Enemy1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 464, 331 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 674, 324 )
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 544, 314 )

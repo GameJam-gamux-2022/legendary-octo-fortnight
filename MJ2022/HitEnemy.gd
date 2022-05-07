@@ -30,3 +30,20 @@ func _on_Area2D_body_shape_entered(body_rid, body, body_shape_index, local_shape
 		var aux = (position - body.position).normalized() * force
 		body.move_and_slide(aux)
 	pass # Replace with function body.
+
+
+func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	pass # Replace with function body.
+
+
+func _on_Area2D_area_entered(area):
+	pass # Replace with function body.
+
+
+func _on_Area2D_body_entered(body):
+	if(body.name == "Player"):
+		body.get_node("Health").damage(100)
+		var force = 10000
+		var aux = (position - body.position).normalized() * force
+		body.move_and_slide(aux)
+	pass # Replace with function body.

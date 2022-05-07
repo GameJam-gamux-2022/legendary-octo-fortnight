@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player = get_node("../Player")
-var boost = 80000
+var boost = 45000
 var lim = 2
 var cooldown = 2
 var velocity = Vector2.ZERO
@@ -17,9 +17,11 @@ func get_dir(p):
 func _physics_process(delta):
 	if cooldown == lim: 
 		velocity = get_dir(player)
+# warning-ignore:return_value_discarded
 		move_and_slide(velocity * boost * delta)
 
 	elif cooldown < lim && cooldown > 0:
+# warning-ignore:return_value_discarded
 		move_and_slide(velocity * boost * delta)
 
 	elif cooldown < lim:

@@ -15,10 +15,8 @@ func shoot(n):
 		var p = projectile.instance()
 		
 		var rot = i * rot_angle
-		print_debug(rot)
 		
 		var ori = Vector2(cos(rot), sin(rot)) 
-		print_debug(ori)
 		
 		p.position = position + k * ori
 		
@@ -32,11 +30,11 @@ func shoot(n):
 func _ready():
 	pass # Replace with function body.
 
-
+export var qtdShoots = 20
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if cooldown <= 0:
-		shoot(20)
+		shoot(qtdShoots)
 		cooldown = cte
 		return
 	cooldown -= delta

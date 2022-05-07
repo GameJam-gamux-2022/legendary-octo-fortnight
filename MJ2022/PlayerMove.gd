@@ -68,19 +68,20 @@ func _physics_process(delta):
 
 onready var root = get_tree().get_root()
 var cooldown_shoot = 0;
-var b;
+var to_destroy = []
 func throw():
 	cooldown_shoot = 1
-	b = boomerang.instance()
+	var b = boomerang.instance()
 	b.position = position + ori * 90
 	
 	root.add_child(b)
+	to_destroy.append(b)
 
 	var initial_speed = 1000
 	b.set_linear_velocity(ori * initial_speed)
 	
 	var angle = b.position.angle_to_point(b.position + ori)
-	b.get_node("Sprite").rotation = (angle) + PI
+	b.get_node("Icon").rotation = (angle) + PI
 	
 	pass
 	
@@ -98,4 +99,9 @@ func uncall():
 		gravity.gravity = 1000
 		gravity.linear_damp = 0.8
 	
+	pass
+	
+func toDestroy():
+	for i in to_destroy:
+		i.queue_free()
 	pass

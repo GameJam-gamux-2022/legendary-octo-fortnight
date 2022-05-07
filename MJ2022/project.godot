@@ -14,9 +14,9 @@ config/name="Mj 2022"
 run/main_scene="res://Sample.tscn"
 config/icon="res://icon.png"
 
-[display]
+[global]
 
-window/stretch/mode="2d"
+stretch=false
 
 [input]
 

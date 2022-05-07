@@ -5,6 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 var move_velocity = Vector2()
+var ori = Vector2()
 
 onready var boomerang = preload("res://Boomerang.tscn")
 
@@ -21,24 +22,32 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		move_velocity.x = 1;
 		
-	if Input.is_action_pressed("ui_page_down"):
+	if Input.is_action_pressed("ui_shoot") && cooldown <= 0 :
 		throw()
+	else:
+		cooldown -= delta
 		
 	move_velocity = move_velocity.normalized()
-	
+	if(move_velocity != Vector2()):
+		ori = move_velocity;
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var speed = 5000
+	var speed = 50000
 	move_and_slide(move_velocity * speed * delta)
 	pass
 
-var root = get_tree().get_root()
+onready var root = get_tree().get_root()
+var cooldown = 0;
 func throw():
+	cooldown = 0.15
 	var b = boomerang.instance()
-	#b.set_pos(Vector2())
+	b.position = position + ori * 70
+	
 	root.add_child(b)
+
+	b.move_velocity = ori
 	
 	pass

@@ -7,7 +7,7 @@
 extents = Vector2( 32, 32.5 )
 
 [node name="Boomerang" type="KinematicBody2D"]
-position = Vector2( 197, 51 )
+scale = Vector2( 0.36, 0.36 )
 script = ExtResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]

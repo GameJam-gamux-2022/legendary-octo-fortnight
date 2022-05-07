@@ -11,4 +11,5 @@
 
 * Tales
 
+* Lucca Chinelato
 

@@ -17,7 +17,6 @@ texture = ExtResource( 2 )
 
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2( 6.10352e-05, 0 )
-scale = Vector2( 1, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 position = Vector2( -56, 430 )

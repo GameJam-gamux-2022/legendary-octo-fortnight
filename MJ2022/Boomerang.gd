@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
 # Declare member variables here. Examples:
@@ -11,10 +11,10 @@ func _ready():
 	pass # Replace with function body.
 
 
-export var move_velocity = Vector2(0, 1)
+export var move_velocity : Vector2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var speed = 10000
-	move_and_slide(move_velocity * speed * delta)
+	set_linear_velocity(move_velocity * speed * delta)
 	pass

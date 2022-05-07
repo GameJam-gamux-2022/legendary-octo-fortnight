@@ -39,24 +39,48 @@ func _process(delta):
 	pass # Replace with function body.
 
 
+onready var sprd = preload("res://Sprites separados/char_front.png")
+onready var spru = preload("res://Sprites separados/char_back.png")
+onready var sprl = preload("res://Sprites separados/char_left.png")
+onready var sprr = preload("res://Sprites separados/char_right.png")
+
+onready var sprite = get_node("Icon")
+func flip():
+	if ori.x < 0:
+		sprite.texture = sprl
+	if ori.x > 0:
+		sprite.texture = sprr
+	if ori.y < 0:
+		sprite.texture = spru
+	if ori.y > 0:
+		sprite.texture = sprd
+	
+	
+	
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var speed = 25000
 	move_and_slide(move_velocity * speed * delta)
+	flip()
 	pass
 
 onready var root = get_tree().get_root()
 var cooldown_shoot = 0;
 var b;
 func throw():
-	cooldown_shoot = 10
+	cooldown_shoot = 1
 	b = boomerang.instance()
-	b.position = position + ori * 70
+	b.position = position + ori * 90
 	
 	root.add_child(b)
 
 	var initial_speed = 1000
 	b.set_linear_velocity(ori * initial_speed)
+	
+	var angle = b.position.angle_to_point(b.position + ori)
+	b.get_node("Sprite").rotation = (angle) + PI
 	
 	pass
 	

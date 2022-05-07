@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _on_Boomerang2_body_entered(body):
-	if(body.name == "Player") || body.name == "Enemy":
+	if(body.name == "Player") || "Enemy" in body.name:
 		body.get_node("Health").damage(100)
 		var force = 2000
 		var aux = -(position - body.position).normalized() * force

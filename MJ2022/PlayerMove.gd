@@ -22,10 +22,16 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		move_velocity.x = 1;
 		
-	if Input.is_action_pressed("ui_shoot") && cooldown <= 0 :
+	if Input.is_action_pressed("ui_shoot") && cooldown_shoot <= 0 :
 		throw()
 	else:
-		cooldown -= delta
+		cooldown_shoot -= delta
+		
+	if Input.is_action_pressed("Recall") && cooldown_recall <= 0 :
+		recall()
+	else:
+		cooldown_recall -= delta
+		uncall()
 		
 	move_velocity = move_velocity.normalized()
 	if(move_velocity != Vector2()):
@@ -40,14 +46,31 @@ func _physics_process(delta):
 	pass
 
 onready var root = get_tree().get_root()
-var cooldown = 0;
+var cooldown_shoot = 0;
+var b;
 func throw():
-	cooldown = 0.15
-	var b = boomerang.instance()
+	cooldown_shoot = 10
+	b = boomerang.instance()
 	b.position = position + ori * 70
 	
 	root.add_child(b)
 
 	b.move_velocity = ori
+	
+	pass
+	
+var cooldown_recall = 0
+onready var gravity : Area2D = $Gravity 
+func recall():
+	cooldown_recall = 2
+	gravity.gravity = 10000
+	gravity.linear_damp = 8
+	
+	pass
+	
+func uncall():
+	if(cooldown_recall <= 1):
+		gravity.gravity = 1000
+		gravity.linear_damp = 0.8
 	
 	pass

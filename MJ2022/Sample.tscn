@@ -24,13 +24,13 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
-[node name="Player3" type="Area2D" parent="Player"]
+[node name="Gravity" type="Area2D" parent="Player"]
 space_override = 3
 gravity_point = true
-gravity_vec = Vector2( 1, 1 )
-gravity = 319.405
+gravity = 1000.0
+linear_damp = 0.8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Gravity"]
 shape = SubResource( 3 )
 
 [node name="Player3" type="KinematicBody2D" parent="."]
@@ -42,6 +42,7 @@ texture = ExtResource( 2 )
 [node name="Player2" type="RigidBody2D" parent="."]
 position = Vector2( 391, 57 )
 physics_material_override = SubResource( 2 )
+can_sleep = false
 
 [node name="Icon" type="Sprite" parent="Player2"]
 texture = ExtResource( 2 )
